@@ -73,13 +73,29 @@ Glue.compose(manifest, options, (err, server) => {
                 const db = request.mongo.db;
                 const ObjectID = request.mongo.ObjectID;
     
-                db.collection('users').findOne({  _id: new ObjectID(request.params.id) }, function (err, result) {
+                db.collection('users').findOne({_id: new ObjectID(request.params.id) }, function (err, result) {
     
                     if (err) {
                         return reply(Boom.internal('Internal MongoDB error', err));
                     }
     
                     reply(result);
+                });
+            }
+        },
+        {
+            method: 'GET',
+            path: '/api/images/{id}',
+            handler(request, reply) {
+                const db = request.mongo.db;
+                const ObjectID = request.mongo.ObjectID;
+    
+                db.collection('images').findOne({_id: new ObjectID(request.params.id) }, function (err, result) {
+    
+                    if (err) {
+                        return reply(Boom.internal('Internal MongoDB error', err));
+                    }
+                    reply.file(result.imagePath);
                 });
             }
         },
