@@ -1,0 +1,29 @@
+{
+  "name": "file-upload",
+  "version": "1.0.0",
+  "description": "Upload Plugin for My Channel Project.",
+  "main": "lib/index.js",
+  "repository": {},
+  "license": "MIT",
+  "devDependencies": {
+    "@types/hapi": "^16.0.0",
+    "@types/node": "6",
+    "code": "3.x.x",
+    "hapi": "^16.1.0",
+    "lab": "10.x.x"
+  },
+  "dependencies": {
+    "boom": "^4.2.0",
+    "file-type": "^4.2.0",
+    "glue": "^4.1.0",
+    "hapi": "^16.1.1",
+    "hapi-mongodb": "^6.2.1",
+    "inert": "^4.2.0",
+    "mkdirp": "^0.5.1",
+    "read-chunk": "^2.0.0"
+  },
+  "scripts": {
+    "test": "lab -t 90 -a code",
+    "test-cov-html": "lab -r html -o coverage.html -a code"
+  }
+}
