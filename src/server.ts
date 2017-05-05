@@ -1,9 +1,7 @@
-import * as imagesController from "./controllers/images";
 import * as routs from "./routes/index";
 
 import * as Glue from "glue";
 import * as  Boom from "boom";
-import * as hapiMongoose from 'hapi-mongoose';
 
 class Server {
     constructor () {
@@ -27,6 +25,15 @@ class Server {
                 },
                 {
                     plugin: 'inert'
+                },
+                {
+                    plugin: {
+                        register: 'hapi-upload-file',
+                        options: {
+                            rootPath: "/Users/siliku/Documents/bluebik/project-my-channel/upload-file-test/uploads",
+                            mimeValidate: ["image/jpeg", "image/png", "image/png"]
+                        }
+                    }
                 }
             ]
         };
