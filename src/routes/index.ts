@@ -20,7 +20,9 @@ export class RouteIndex {
                 path: '/api/users',
                 handler: usersController.handlerUsers(),
                 config: {
-                    validate: usersController.validatePayload()
+                    validate: {
+                        payload: usersController.validateRequest()
+                    }
                 }
             }
         ]);

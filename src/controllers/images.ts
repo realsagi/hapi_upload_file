@@ -70,9 +70,9 @@ export class ControllerImages implements IImages {
         });
     }
 
-    public uploadImages (data: any): any {
+    public uploadImages (data: IUploadImages): any {
         return this.writeFile(data).then((result: any) => {
-            let dataForSave: any = {
+            let dataForSave: ISaveImagesMongoose = {
                 tableName: data.tableName,
                 idTableName: data.idTableName,
                 type: data.type,

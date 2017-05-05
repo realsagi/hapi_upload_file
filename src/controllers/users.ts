@@ -34,16 +34,14 @@ export class UserController {
         });
     }
 
-    public validatePayload (): any {
+    public validateRequest (): any {
         return {
-            payload : {
-                firstName: Joi.string().required(),
-                lastName: Joi.string().required(),
-                email: Joi.string().email().required(),
-                password: Joi.string().required(),
-                fileBinary: Joi.string().required(),
-                fileName: Joi.string().required()
-            }
+            firstName: Joi.string().required(),
+            lastName: Joi.string().required(),
+            email: Joi.string().email().required(),
+            password: Joi.string().required(),
+            fileBinary: Joi.string().required(),
+            fileName: Joi.string().required()
         };
     }
 
@@ -53,7 +51,7 @@ export class UserController {
             let dataResponse: any = {};
             let password: string = data.password;
             this.hashBcryptPassword(password).then((hash: any) => {
-                let dataForSave: any = {
+                let dataForSave: ISaveUsersMongoose = {
                     firstName: data.firstName,
                     lastName: data.lastName,
                     email: data.email,
@@ -62,7 +60,7 @@ export class UserController {
                 let users: any = new this.usersModel(dataForSave);
                 return users.save();
             }).then((users: any) => {
-                let dataUploadImage: any = {
+                let dataUploadImage: IUploadImages = {
                     tableName: "users",
                     idTableName: users._id,
                     type: "profile",
