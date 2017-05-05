@@ -48,17 +48,18 @@ $('.tab a').on('click', function (e) {
 
 $('#getStart').on('click', function(e){
   var data = {
-    name : $('#name').val(),
-    last : $('#lastName').val(),
+    firstName : $('#name').val(),
+    lastName : $('#lastName').val(),
     email : $('#email').val(),
     password : $('#password').val(),
     fileBinary: fileReadUpload,
-    fileName: fileName,
-    fileType: fileType
+    fileName: fileName
   }
   console.log(data);
   $.post("/api/users", data,function (response){
     console.log(response);
+  },function(err){
+    console.log(err);
   });
 });
 
