@@ -1,4 +1,4 @@
-import * as routs from "./routes/index";
+import hapiUsers from "hapi-users";
 
 import * as Glue from "glue";
 import * as  Boom from "boom";
@@ -34,6 +34,9 @@ class Server {
                             mimeValidate: ["image/jpeg", "image/png", "image/png"]
                         }
                     }
+                },
+                {
+                    plugin: 'hapi-users'
                 }
             ]
         };
@@ -47,8 +50,18 @@ class Server {
                 throw err;
             }
 
-            let db: any = server.plugins['hapi-mongoose'].connection;
-            let routsObject: any = new routs.RouteIndex(server, db);
+            server.route([
+                {
+                    method: 'GET',
+                    path: '/{param*}',
+                    handler: {
+                        directory: {
+                            path: 'public/sign-up-login-form',
+                            listing: true
+                        }
+                    }
+                }
+            ]);
 
             server.start(() => {
                 console.log('hapi started');
