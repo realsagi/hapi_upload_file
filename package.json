@@ -22,7 +22,7 @@
     "hapi-mongoose": "^1.0.1",
     "inert": "^4.2.0",
     "mongoose": "^4.9.7",
-    "hapi-upload-file": "git+ssh://git@github.com:realsagi/hapi_lip_upload_file.git#a6b0de632cd39bb304dcf2cb6b5d41735b93ecdb",
+    "hapi-upload-file": "git+ssh://git@github.com:realsagi/hapi_lip_upload_file.git#1bf78e7961c860db92b9bbdb9f464cfb47fa878e",
     "hapi-users": "git+ssh://git@github.com:realsagi/hapi_lip_users.git#48fb1ba5ca55b6800d26c4894c134529a8b45a11"
   },
   "scripts": {
